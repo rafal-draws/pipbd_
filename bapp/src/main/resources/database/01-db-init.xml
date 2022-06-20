@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="1" author="drawsr">
+
+    <createTable tableName="clients">
+        <column name="id" type="int" autoIncrement="true">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="firstName" type="varchar(50)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="lastName" type="varchar(50)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="PESEL" type="char(11)"/>
+    </createTable>
+
+    <createTable tableName="accounts">
+        <column name="id" type="int" autoIncrement="true">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="clientId" type="int">
+            <constraints foreignKeyName="fk_client_id" references="clients(id)"/>
+        </column>
+        <column name="balance" type="int">
+            <constraints nullable="false"/>
+        </column>
+        <column name="percentage" type="int"/>
+        <column name="percentageSpan" type="int"/>
+        <column name="percentageDate" type="date"/>
+    </createTable>
+
+    <createTable tableName="a2atransactions">
+        <column name="id" type="int" autoIncrement="true">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="senderAcc" type="int">
+            <constraints nullable="false" foreignKeyName="fk_sender_id"
+                         references="accounts(id)"/>
+        </column>
+        <column name="getterAcc" type="int">
+            <constraints nullable="true" foreignKeyName="fk_getter_id"
+                         references="accounts(id)"/>
+        </column>
+        <column name="amount" type="int">
+            <constraints nullable="false"/>
+        </column>
+        <column name="date" type="date"/>
+    </createTable>
+
+    <createTable tableName="balancechecks">
+        <column name="id" type="int" autoIncrement="true">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="accId" type="int">
+            <constraints nullable="false" foreignKeyName="fk_account_id_balance"
+                         references="accounts(id)"/>
+        </column>
+        <column name="amount" type="int"/>
+        <column name="date" type="date"/>
+
+    </createTable>
+        <createTable tableName="withdrawals">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="accId" type="int">
+                <constraints nullable="false" foreignKeyName="fk_account_id_withdrawals"
+                             references="accounts(id)"/>
+            </column>
+            <column name="amount" type="int"/>
+            <column name="balance" type="int"/>
+            <column name="date" type="date"/>
+        </createTable>
+
+        <createTable tableName="deposits">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="accId" type="int">
+                <constraints nullable="false" foreignKeyName="fk_account_id_deposits"
+                             references="accounts(id)"/>
+            </column>
+            <column name="amount" type="int"/>
+            <column name="balance" type="int"/>
+            <column name="date" type="date"/>
+        </createTable>
+        <createTable tableName="interestrates">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="accId" type="int">
+                <constraints nullable="false" foreignKeyName="fk_account_id_interestrates"
+                             references="accounts(id)"/>
+            </column>
+            <column name="percentage" type="int"/>
+            <column name="percentageSpan" type="int"/>
+            <column name="percentageDate" type="date"/>
+            <column name="balance" type="int"/>
+            <column name="date" type="date"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
