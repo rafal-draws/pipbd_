@@ -19,7 +19,7 @@
         <column name="lastName" type="varchar(50)">
             <constraints nullable="false"/>
         </column>
-        <column name="PESEL" type="char(11)"/>
+        <column name="PESEL" type="bigint"/>
     </createTable>
 
     <createTable tableName="accounts">
@@ -27,14 +27,14 @@
             <constraints primaryKey="true"/>
         </column>
         <column name="clientId" type="int">
-            <constraints foreignKeyName="fk_client_id" references="clients(id)"/>
+            <constraints foreignKeyName="clientid" references="clients(id)"/>
         </column>
         <column name="balance" type="int">
             <constraints nullable="false"/>
         </column>
         <column name="percentage" type="int"/>
         <column name="percentageSpan" type="int"/>
-        <column name="percentageDate" type="date"/>
+        <column name="percentageDate" type="varchar(11)"/>
     </createTable>
 
     <createTable tableName="a2atransactions">
@@ -52,7 +52,7 @@
         <column name="amount" type="int">
             <constraints nullable="false"/>
         </column>
-        <column name="date" type="date"/>
+        <column name="date" type="timestamp"/>
     </createTable>
 
     <createTable tableName="balancechecks">

@@ -1,17 +1,13 @@
 package pipbd.bapp.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "clients")
+@Data
 public class Client {
 
     @Id
@@ -19,13 +15,13 @@ public class Client {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "firstName")
+    @Column(name = "firstname")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     private String lastName;
 
     @Column(name = "PESEL")
-    private int PESEL;
+    private Long PESEL;
 
 }
