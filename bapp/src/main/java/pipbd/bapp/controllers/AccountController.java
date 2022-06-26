@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pipbd.bapp.models.Account;
 import pipbd.bapp.services.AccountService;
-import pipbd.bapp.services.WithdrawalDepositService;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 public class AccountController {
 
     private final AccountService accountService;
-    private final WithdrawalDepositService withdrawalDepositService;
     @GetMapping("/accounts")
     public List<Account> getAllAccounts(){
         return accountService.getAllAccounts();
@@ -32,7 +30,7 @@ public class AccountController {
     }
 
 
-    @PutMapping("/accounts/{id}/deposit/{amount}")
+    @PutMapping("/accounts/{id}/depositwithdraw/{amount}")
     public String depositAmountForAccount(@PathVariable Long id, @PathVariable Float amount){
         return accountService.depositWithdrawAmount(id, BigDecimal.valueOf(amount));
     }
