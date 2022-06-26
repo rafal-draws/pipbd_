@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "accounts")
@@ -25,7 +27,7 @@ public class Account {
     private Client clientId;
 
     @Column(name = "balance")
-    private Float balance;
+    private BigDecimal balance;
 
     @Column(name = "percentage")
     private int percentage;

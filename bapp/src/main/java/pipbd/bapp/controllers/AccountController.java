@@ -6,6 +6,7 @@ import pipbd.bapp.models.Account;
 import pipbd.bapp.services.AccountService;
 import pipbd.bapp.services.WithdrawalDepositService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -26,13 +27,13 @@ public class AccountController {
     }
 
     @GetMapping("/accounts/{id}/balance")
-    public float getAccountBalanceById(@PathVariable Long id){
+    public BigDecimal getAccountBalanceById(@PathVariable Long id){
         return accountService.getBalanceById(id);
     }
 
 
     @PutMapping("/accounts/{id}/deposit/{amount}")
     public String depositAmountForAccount(@PathVariable Long id, @PathVariable Float amount){
-        return accountService.depositWithdrawAmount(id, amount);
+        return accountService.depositWithdrawAmount(id, BigDecimal.valueOf(amount));
     }
 }
