@@ -1,8 +1,8 @@
-###Front Office Bank Application
+<h1>Front Office Bank Application</h1>
 
-##This application was made for my collage subject, Databases programming and projecting.
+<h2>This application was made for my collage subject, Databases programming and projecting.
 
-##Technologies that I've used:
+Technologies that I've used:</h2>
 
 ☕ Java 18 <br>
 🍃 Spring Boot <br>
