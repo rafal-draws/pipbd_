@@ -33,6 +33,7 @@ public class AccountService {
     public String depositWithdrawAmount(Long id, BigDecimal amount){
         Account account = accountRepository.findById(id).orElseThrow();
         Client client = account.getClientId();
+
         if(amount.compareTo(BigDecimal.ZERO) < 0){
             accountRepository.save(new Account(
                     id,
@@ -43,8 +44,6 @@ public class AccountService {
                     account.getPercentagedate()
             ));
             return "You've successfully withdrawn " + (amount.multiply(BigDecimal.valueOf(-1))) + " from " + client.getFirstName() + "'s account";
-        } else if (amount.equals(null)) {
-            return "Amount cannot be null!";
         } else {
             accountRepository.save(new Account(
                     id,

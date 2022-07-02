@@ -21,7 +21,7 @@ public class Account {
     @Column(name = "id")
     private Long id;
 
-    @JoinColumn(name = "clientid")
+    @JoinColumn(name = "clientid") // JOIN .... CLIENT_ID
     @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     private Client clientId;

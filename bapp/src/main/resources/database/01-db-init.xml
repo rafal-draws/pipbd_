@@ -49,6 +49,7 @@
             <constraints nullable="true" foreignKeyName="fk_getter_id"
                          references="accounts(id)"/>
         </column>
+        <column name="finished" type="varchar(4)"/>
         <column name="amount" type="int">
             <constraints nullable="false"/>
         </column>

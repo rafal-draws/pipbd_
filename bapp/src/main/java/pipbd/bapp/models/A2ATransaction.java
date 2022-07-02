@@ -19,18 +19,17 @@ public class A2ATransaction {
     @Column(name = "id")
     private Long id;
 
-    @JoinColumn(name = "senderacc")
-    @OneToOne(cascade = CascadeType.ALL)
-    @MapsId
-    private Client senderacc;
+    @Column(name = "senderacc")
+    private Long senderacc;
 
-    @JoinColumn(name = "getteracc")
-    @OneToOne(cascade = CascadeType.ALL)
-    @MapsId
-    private Client getteracc;
+    @Column(name = "getteracc")
+    private Long getteracc;
 
     @Column(name = "amount")
     private BigDecimal amount;
+
+    @Column(name = "finished")
+    private boolean finished;
 
     @Column(name = "date")
     private Timestamp date;
